@@ -1,0 +1,77 @@
+﻿@model WeatherViewModel
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 2px solid black; 
+    }
+
+    th, td {
+        border: 1px solid #4e7ea8;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: black;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2; 
+    }
+</style>
+
+<h1>Weather Information</h1>
+
+@if (Model != null)
+{
+    <table>
+        <tr>
+            <th>City:</th>
+            <td>@Model.City</td>
+        </tr>
+        <tr>
+            <th>Coordinates:</th>
+            <td>Lon: @Model.Coordinates.lon, Lat: @Model.Coordinates.lat</td> 
+        </tr>
+        <tr>
+            <th>Country:</th>
+            <td>@Model.Country</td>
+        </tr>
+        <tr>
+            <th>Temperature:</th>
+            <td>@Model.Temperature</td>
+        </tr>
+        <tr>
+            <th>Description:</th>
+            <td>@Model.Description</td>
+        </tr>
+        <tr>
+            <th>Sunrise:</th>
+            <td>@DateTimeOffset.FromUnixTimeSeconds(Model.Sunrise).DateTime</td>
+        </tr>
+        <tr>
+            <th>Sunset:</th>
+            <td>@DateTimeOffset.FromUnixTimeSeconds(Model.Sunset).DateTime</td>
+        </tr>
+        <tr>
+            <th>Humidity:</th>
+            <td>@Model.Humidity</td> 
+        </tr>
+        <tr>
+            <th>Wind Speed:</th>
+            <td>@Model.WindSpeed</td>
+        </tr>
+        
+        <tr>
+            <th>Pressure:</th>
+            <td>@Model.Pressure</td> 
+        </tr>
+    </table>
+}
+else
+{
+    <p>No weather information available.</p>
+}
